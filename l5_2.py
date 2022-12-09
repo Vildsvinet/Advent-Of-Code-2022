@@ -42,6 +42,7 @@ for i in range(len(cratestacks)):
     cratestacks[i] = [j for j in cratestacks[i] if j != ' ']
     cratestacks[i].reverse()
 
+
 #only keep the integers
 for i in range(len(moves)):
     moves[i] = [int(m) for m in moves[i] if m.isdigit()]
@@ -55,9 +56,9 @@ for i in range(len(moves)):
     origin = moves[i][1]
     target = moves[i][2]
 
-    for j in range(amount):                     #move a box
-        box = cratestacks[origin - 1].pop()
-        cratestacks[target - 1].append(box)
+    cratestacks[target-1] += cratestacks[origin-1][-amount:]
+    cratestacks[origin-1] = cratestacks[origin-1][:-amount]
+
 
 #print the result
 topcrates = ''
